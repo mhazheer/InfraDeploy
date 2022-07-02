@@ -119,7 +119,6 @@ resource "aws_security_group_rule" "ingress_allow_private" {
   security_group_id = aws_security_group.allow_nat.id
 }
 
-*/
 
 # Route Table
 ## Private
