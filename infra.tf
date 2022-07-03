@@ -6,7 +6,9 @@ variable "env" {
   type    = string
   default = "dev"
 }
-
+variable "app_name" {
+  type    = string
+}
 # VPC
 resource "aws_vpc" "vpc" {
   cidr_block           = "10.0.0.0/16"
@@ -17,6 +19,7 @@ resource "aws_vpc" "vpc" {
 
   tags = {
     Name = "${var.env}-vpc"
+    projectName = "${var.app_name}-vpc"
   }
 }
 
@@ -26,6 +29,7 @@ resource "aws_internet_gateway" "igw" {
 
   tags = {
     Name = "${var.env}-igw"
+    projectName = "${var.app_name}-igw"
   }
 }
 
@@ -39,6 +43,7 @@ resource "aws_subnet" "subnet-public-1" {
   availability_zone       = "eu-west-1a"
   tags = {
     Name = "${var.env}-subnet-public-1"
+    projectName = "${var.app_name}-subnet-public-1"
   }
 }
 
@@ -50,6 +55,7 @@ resource "aws_subnet" "subnet-public-2" {
   availability_zone       = "eu-west-1b"
   tags = {
     Name = "${var.env}-subnet-public-2"
+    projectName = "${var.app_name}-subnet-public-2"
   }
 }
 
@@ -61,6 +67,7 @@ resource "aws_subnet" "subnet-public-3" {
   availability_zone       = "eu-west-1c"
   tags = {
     Name = "${var.env}-subnet-public-3"
+    projectName = "${var.app_name}-subnet-public-3"
   }
 }
 
@@ -73,6 +80,7 @@ resource "aws_subnet" "subnet-private-1" {
   availability_zone       = "eu-west-1a"
   tags = {
     Name = "${var.env}-subnet-private-1"
+    projectName = "${var.app_name}-subnet-private-1"
   }
 }
 
@@ -84,6 +92,7 @@ resource "aws_subnet" "subnet-private-2" {
   availability_zone       = "eu-west-1b"
   tags = {
     Name = "${var.env}-subnet-private-2"
+    projectName = "${var.app_name}-subnet-private-2"
   }
 }
 
@@ -95,6 +104,7 @@ resource "aws_subnet" "subnet-private-3" {
   availability_zone       = "eu-west-1c"
   tags = {
     Name = "${var.env}-subnet-private-3"
+    projectName = "${var.app_name}-subnet-private-3"
   }
 }
 /*
@@ -114,6 +124,7 @@ resource "aws_instance" "nat" {
 
   tags = {
     Name = "${var.env}-NatInstance"
+    projectName = "${var.app_name}-NatInstance"
   }
 }
 
@@ -157,6 +168,7 @@ resource "aws_default_route_table" "main-private" {
 */
   tags = {
     Name = "${var.env}-rt-main-private"
+    projectName = "${var.app_name}-rt-main-private"
   }
 }
 
@@ -171,6 +183,7 @@ resource "aws_route_table" "public" {
 
   tags = {
     Name = "${var.env}-rt-public"
+    projectName = "${var.app_name}-rt-public"
   }
 }
 
