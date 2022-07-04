@@ -191,5 +191,8 @@ resource "aws_route_table_association" "public-3" {
 }
 terraform {
   backend "s3"{
+    bucket = "tmp-algerie"
+    key    = "/home/ubuntu/.ssh/MyKey.pem"
+    region = "eu-west-1"
   }
 }
